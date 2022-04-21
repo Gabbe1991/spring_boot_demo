@@ -27,8 +27,8 @@ public class BlogController {
 
 
     @GetMapping
-    public List<BlogResponseDTO> getBlogPostList() {
-        return blogService.findAll()
+    public List<BlogResponseDTO> getBlogPostList(@RequestParam(required = false)String username){
+        return blogService.findAll(username)
                 .stream()
                 .map(blogPost -> blogDTOConverter.entityToResponseDTO(blogPost))
                 .toList();
@@ -42,7 +42,7 @@ public class BlogController {
     }
 
     @PutMapping("/{id}")
-    public BlogResponseDTO updateByBlogPost(
+    public BlogResponseDTO  updateByBlogPost(
             @PathVariable("id")int id,
             @RequestBody BlogRequestDTO changedBlogPostDTO){
 

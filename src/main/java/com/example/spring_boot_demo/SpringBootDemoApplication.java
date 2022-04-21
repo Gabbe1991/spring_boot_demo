@@ -9,6 +9,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.List;
+
 @SpringBootApplication
 public class SpringBootDemoApplication implements CommandLineRunner {
 
@@ -27,10 +29,14 @@ public class SpringBootDemoApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         AppUser appUser = new AppUser("Gunnar");
-        appUserRepository.save(appUser);
+        AppUser appUser2 = new AppUser("Alince");
+
+        appUserRepository.saveAll(List.of(appUser, appUser2));
 
         BlogPost blogPost = new BlogPost("1","vackert väder", appUser);
-                blogPostRepository.save(blogPost);
+        BlogPost blogPost2 = new BlogPost("Post 2", "Fiskade fisk idag", appUser);
+        BlogPost blogPost3 = new BlogPost("Hej från Alice", "ville bara säga hej till världen jag också", appUser);
+        blogPostRepository.saveAll(List.of(blogPost, blogPost2, blogPost3));
 
     }
 }
