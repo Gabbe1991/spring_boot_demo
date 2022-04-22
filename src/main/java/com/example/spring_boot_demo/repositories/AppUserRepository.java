@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface AppUserRepository extends JpaRepository<AppUser, Integer> {
     
-    List<BlogPost> findByAppUser_Username();
+
 }

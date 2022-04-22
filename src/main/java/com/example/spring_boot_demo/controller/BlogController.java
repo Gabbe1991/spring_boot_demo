@@ -7,12 +7,14 @@ import com.example.spring_boot_demo.entities.BlogPost;
 import com.example.spring_boot_demo.services.BlogService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/blog")
 public class BlogController {
 
@@ -27,11 +29,10 @@ public class BlogController {
 
 
     @GetMapping
-    public List<BlogResponseDTO> getBlogPostList(@RequestParam(required = false)String username){
-        return blogService.findAll(username)
-                .stream()
-                .map(blogPost -> blogDTOConverter.entityToResponseDTO(blogPost))
-                .toList();
+    public String getBlogPostList(@RequestParam(required = false)String username, Model model){
+         List<BlogPost> blogPostList =blogService.findAll(username);
+        model.addAttribute("blogPostList", blogPostList);
+         return "blog";
 
     }
 
@@ -42,13 +43,13 @@ public class BlogController {
     }
 
     @PutMapping("/{id}")
-    public BlogResponseDTO  updateByBlogPost(
+    public BlogResponseDTO  updateByBlogPostId(
             @PathVariable("id")int id,
             @RequestBody BlogRequestDTO changedBlogPostDTO){
 
         BlogPost changedBlogPost = blogDTOConverter.requestDTOToEntity(changedBlogPostDTO);
 
-        BlogPost blogPostOut = blogService.updatBlogById(id, changedBlogPost);
+        BlogPost blogPostOut = blogService.updateBlogById(id, changedBlogPost);
         return blogDTOConverter.entityToResponseDTO(blogPostOut);
 
 

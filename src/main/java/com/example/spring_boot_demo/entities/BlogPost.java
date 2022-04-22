@@ -17,7 +17,7 @@ public class BlogPost {
     private String message;
 
     @ManyToOne
-    @JoinColumn(name = "appUser_id")
+    @JoinColumn(name = "appUser")
     private AppUser appUser;
 
 

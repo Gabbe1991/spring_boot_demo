@@ -38,7 +38,7 @@ public class BlogService {
         blogPostRepository.deleteById(id);
     }
 
-    public BlogPost updatBlogById(int id, BlogPost changedBlogPost) {
+    public BlogPost updateBlogById(int id, BlogPost changedBlogPost) {
 
         BlogPost blogPost = blogPostRepository.findById(id).orElseThrow();
 
