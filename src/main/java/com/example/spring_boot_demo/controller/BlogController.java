@@ -4,24 +4,24 @@ import com.example.spring_boot_demo.dto.BlogDTOConverter;
 import com.example.spring_boot_demo.dto.BlogRequestDTO;
 import com.example.spring_boot_demo.dto.BlogResponseDTO;
 import com.example.spring_boot_demo.entities.BlogPost;
-import com.example.spring_boot_demo.services.BlogService;
-import org.springframework.beans.BeanUtils;
+import com.example.spring_boot_demo.repositories.BlogPostRepository;
+import com.example.spring_boot_demo.services.BlogPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 @RequestMapping("/blog")
 public class BlogController {
 
+    BlogPostRepository blogPostRepository;
 
 
     @Autowired
-    BlogService blogService;
+    BlogPostService blogService;
 
 
     @Autowired
@@ -34,6 +34,10 @@ public class BlogController {
         model.addAttribute("blogPostList", blogPostList);
          return "blog";
 
+    }
+    @GetMapping("addBlog")
+    public String addBlog(){
+        return "addBlogForm";
     }
 
     @GetMapping("{id}")
@@ -62,7 +66,7 @@ public class BlogController {
 
 
 
-    @DeleteMapping("/{id}")
+ /*   @DeleteMapping("/{id}")
     public void deleteBlogPostById(@PathVariable("id") int id){
          blogService.DeleteById(id);
     }
@@ -74,6 +78,19 @@ public class BlogController {
         BlogPost blogPostOut = blogService.CreateBlog(blogPostIn);
         return blogDTOConverter.entityToResponseDTO((blogPostOut));
 
+    }
+
+ */
+//i must swap diz cuz it do nathing
+   /* @PostMapping
+    public String editBlogPost(@PathVariable("id") int id, @ModelAttribute BlogPost blogPost){
+    blogPostRepository.updatebyId(id, blogPost);
+    return "redirect:/blog"; */
+
+    @PostMapping
+    public String createBlog(@ModelAttribute BlogPost blogPost){
+        blogPostService.save(blogPost);
+                return "redirect:/blog";
     }
     
 

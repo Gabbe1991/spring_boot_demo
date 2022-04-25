@@ -2,18 +2,17 @@ package com.example.spring_boot_demo.services;
 
 import com.example.spring_boot_demo.entities.BlogPost;
 import com.example.spring_boot_demo.repositories.BlogPostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class BlogService {
+public class BlogPostService {
 
     //@Autowired
     BlogPostRepository blogPostRepository;
 
-    public BlogService(BlogPostRepository blogPostRepository) {
+    public BlogPostService(BlogPostRepository blogPostRepository) {
         this.blogPostRepository = blogPostRepository;
     }
 
@@ -63,6 +62,8 @@ public class BlogService {
     public BlogPost CreateBlog(BlogPost blogPost) {
         return blogPostRepository.save(blogPost);
     }
+
+
 
 }
 

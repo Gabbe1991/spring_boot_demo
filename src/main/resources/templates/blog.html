@@ -2,20 +2,25 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <meta> charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8">
+    <title>Blog 3000</title>
+    <link th:href="@{/blog.css}", rel="stylesheet">
 </head>
 <body>
-    <div> class="container">
-     <h1 class="title">Välkommen till bloggen!</h1>
-     <div th:each="blogpost : ${blogPostList}">
-         <h2 th:text="${blogpost.getTitle()}"></h2>
-         <p th:text="${blogpost.getMessage()}"></p>
-         <hr />
-     </div>
-
-
-
+<div class="container">
+    <h1 class="title">Välkommen till bloggen!</h1>
+    <div th:each="blogpost : ${blogPostList}">
+        <h2 th:text="${blogpost.getTitle()}"></h2>
+        <p th:text="${blogpost.getMessage()}"></p>
+        <hr />
+        <button>Delete</button>
     </div>
+    <br><br>
+    <a th:href="@{/blog/addBlog}"<button>Add new blogpost</button> </a>
+
+
+
+
+</div>
 </body>
 </html>
