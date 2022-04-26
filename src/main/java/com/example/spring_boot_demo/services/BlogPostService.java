@@ -10,6 +10,8 @@ import java.util.List;
 public class BlogPostService {
 
     //@Autowired
+    //BlogPostRepository blogPostRepository;
+
     BlogPostRepository blogPostRepository;
 
     public BlogPostService(BlogPostRepository blogPostRepository) {
@@ -18,23 +20,23 @@ public class BlogPostService {
 
 
     public List<BlogPost> findAll(String username) {
-        if(username != null) {
+        if (username != null) {
             return blogPostRepository.findByAppUser_Username(username);
-        }
-        else {
+        } else {
             return blogPostRepository.findAll();
-
-
         }
-        }
+    }
 
     public BlogPost findBlogById(int id) {
         return blogPostRepository.findById(id).orElseThrow();
     }
 
-
-    public void DeleteById(int id) {
+    public void deleteById(int id) {
         blogPostRepository.deleteById(id);
+    }
+
+    public BlogPost createBlog(BlogPost blogPost) {
+        return blogPostRepository.save(blogPost);
     }
 
     public BlogPost updateBlogById(int id, BlogPost changedBlogPost) {
@@ -42,29 +44,18 @@ public class BlogPostService {
         BlogPost blogPost = blogPostRepository.findById(id).orElseThrow();
 
 
-
-         if(changedBlogPost.getTitle() != null)
-                blogPost.setTitle(changedBlogPost.getTitle());
+        if (changedBlogPost.getTitle() != null)
+            blogPost.setTitle(changedBlogPost.getTitle());
         if (changedBlogPost.getMessage() != null)
-                blogPost.setMessage(changedBlogPost.getMessage() );
+            blogPost.setMessage(changedBlogPost.getMessage());
 
-            return blogPostRepository.save(blogPost);
-
+        return blogPostRepository.save(blogPost);
 
 
         //BeanUtils.copyProperties(changedBlogPost, existingBlogPost, "id");
-
-
-
-
     }
 
-    public BlogPost CreateBlog(BlogPost blogPost) {
-        return blogPostRepository.save(blogPost);
+    public void save(BlogPost blogPost) {
+        blogPostRepository.save(blogPost);
     }
-
-
-
 }
-
-

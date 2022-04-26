@@ -35,7 +35,7 @@ public class SpringBootDemoApplication implements CommandLineRunner {
 
         BlogPost blogPost = new BlogPost("1","vackert väder", appUser);
         BlogPost blogPost2 = new BlogPost("Post 2", "Fiskade fisk idag", appUser);
-        BlogPost blogPost3 = new BlogPost("Hej från Alice", "ville bara säga hej till världen jag också", appUser);
+        BlogPost blogPost3 = new BlogPost("Hej från Alice", "ville bara säga hej till världen jag också", appUser2);
         blogPostRepository.saveAll(List.of(blogPost, blogPost2, blogPost3));
 
     }
