@@ -20,6 +20,11 @@ public class AppUser {
    @Column(nullable = false, unique = true)
    private String username;
 
+    //Added
+    //Lägger till email
+    @Column(nullable = false)
+    private String email;
+
    @OneToMany(mappedBy = "appUser")
    @JsonIgnore
    private Set<BlogPost> blogPosts;
@@ -28,8 +33,9 @@ public class AppUser {
 
 
 
-    public AppUser(String username) {
+    public AppUser(String username, String email) {
         this.username = username;
+        this.email = email;
     }
 
     public AppUser(){
@@ -56,6 +62,14 @@ public class AppUser {
 
     public Set<BlogPost> getBlogPosts() {
         return blogPosts;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setBlogPosts(Set<BlogPost> blogPosts) {

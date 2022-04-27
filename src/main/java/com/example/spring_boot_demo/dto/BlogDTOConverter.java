@@ -16,11 +16,11 @@ public class BlogDTOConverter {
         return  new BlogResponseDTO(blogPost.getId(), blogPost.getTitle(), blogPost.getMessage(), blogPost.getAppUser().getId());
 
     }
+
     public BlogPost requestDTOToEntity(BlogRequestDTO blogRequestDTO){
 
         AppUser appUser = appUserRepository.findById(blogRequestDTO.getAppUserId()).orElseThrow();
 
         return new BlogPost(blogRequestDTO.getTitle(), blogRequestDTO.getMessage(), appUser);
     }
-
 }

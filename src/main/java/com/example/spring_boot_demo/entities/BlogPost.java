@@ -13,7 +13,9 @@ public class BlogPost {
     private int id;
 
     @Column(nullable = false, unique = true)
+    @NotBlank
     private String title;
+
     @Column(nullable = false)
     @NotBlank
     private String message;
@@ -59,7 +61,7 @@ public class BlogPost {
     }
 
     public AppUser getAppUser() {
-        return appUser;
+        return appUser == null ? null : appUser;
     }
 
     public void setAppUser(AppUser appUser) {

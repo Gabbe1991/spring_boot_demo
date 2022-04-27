@@ -1,6 +1,7 @@
 package com.example.spring_boot_demo.services;
 
 import com.example.spring_boot_demo.entities.BlogPost;
+import com.example.spring_boot_demo.repositories.AppUserRepository;
 import com.example.spring_boot_demo.repositories.BlogPostRepository;
 import org.springframework.stereotype.Service;
 

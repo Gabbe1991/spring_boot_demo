@@ -28,8 +28,8 @@ public class SpringBootDemoApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        AppUser appUser = new AppUser("Gunnar");
-        AppUser appUser2 = new AppUser("Alince");
+        AppUser appUser = new AppUser("Gunnar", "Gunnar@gmail.com");
+        AppUser appUser2 = new AppUser("Alice", "Alice@gmail.com");
 
         appUserRepository.saveAll(List.of(appUser, appUser2));
 

@@ -32,11 +32,13 @@ public class BlogForm extends FormLayout {
 
     private void onSave() {
         BlogPost blogPost = binder.validate().getBinder().getBean();
+
         if(blogPost.getId() != 0){
             blogPostService.updateBlogById(blogPost.getId(), blogPost);
         } else {
             blogPostService.createBlog(blogPost);
         }
+
         setBlogPost(null);
         mangePostView.updateItems();
     }
