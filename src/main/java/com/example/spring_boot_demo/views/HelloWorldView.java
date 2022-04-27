@@ -23,7 +23,7 @@ public class HelloWorldView extends VerticalLayout {
         add(pageTitle);
 
 
-        renderBlogPost(); 
+        renderBlogPost();
 
 
 
@@ -31,7 +31,7 @@ public class HelloWorldView extends VerticalLayout {
     }
 
     private void renderBlogPost() {
-        blogPostService.findAll(null).forEach(blogPost -> {
+        blogPostService.findAll().forEach(blogPost -> {
 
 
             VerticalLayout blogPostLayout = new VerticalLayout();
@@ -62,7 +62,7 @@ public class HelloWorldView extends VerticalLayout {
         this
                 .getChildren()
                 .filter(component -> component.getElement().getClassList().contains("blogpostlayout"))
-                        .forEach(component -> remove(component));
+                .forEach(component -> remove(component));
         renderBlogPost();
 
     }

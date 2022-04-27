@@ -19,12 +19,8 @@ public class BlogPostService {
     }
 
 
-    public List<BlogPost> findAll(String username) {
-        if (username != null) {
-            return blogPostRepository.findByAppUser_Username(username);
-        } else {
-            return blogPostRepository.findAll();
-        }
+    public List<BlogPost> findAll() {
+        return blogPostRepository.findAll();
     }
 
     public BlogPost findBlogById(int id) {

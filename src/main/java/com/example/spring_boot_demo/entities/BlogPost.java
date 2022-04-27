@@ -1,6 +1,7 @@
 package com.example.spring_boot_demo.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 
@@ -14,6 +15,7 @@ public class BlogPost {
     @Column(nullable = false, unique = true)
     private String title;
     @Column(nullable = false)
+    @NotBlank
     private String message;
 
     @ManyToOne

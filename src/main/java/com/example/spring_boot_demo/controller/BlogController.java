@@ -32,7 +32,7 @@ public class BlogController {
 
     @GetMapping
     public String getBlogPostList(@RequestParam(required = false)String username, Model model){
-        List<BlogPost> blogPostList = blogPostService.findAll(username);
+        List<BlogPost> blogPostList = blogPostService.findAll();
         model.addAttribute("blogPostList", blogPostList);
         return "blog";
     }
